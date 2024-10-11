@@ -1,0 +1,50 @@
+{% extends 'base.html' %} {% block content %}
+<div class="row justify-content-center mt-5">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Tutorial to add image on S3 Cloudtopiaa</h4>
+      </div>
+      <div class="card-body">
+        <!-- Display success or error messages -->
+
+        <form method="POST" enctype="multipart/form-data">
+          <div class="content">
+            {% csrf_token %}
+            <div class="form-group mb-3">
+              <label for="id_name">Name</label>
+              {{ form.name }}
+            </div>
+            <div class="form-group mb-3">
+              <label for="id_email">Email</label>
+              {{ form.email }}
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="id_photos">Photos</label>
+              {{ form.image }}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <button type="button" class="btn btn-outline-secondary mt-2 user-defined">
+      <a href="{% url 'web:index' %}" class="button">View all Images</a>
+    </button>
+  </div>
+</div>
+<script>
+  // Check if Django messages exist
+  {% if messages %}
+      {% for message in messages %}
+          Swal.fire({
+              icon: 'success',  // SweetAlert icon for success
+              title: '{{ message }}',
+              showConfirmButton: true,
+          });
+      {% endfor %}
+  {% endif %}
+</script>
+
+{% endblock content %}

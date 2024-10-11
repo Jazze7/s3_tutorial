@@ -1,0 +1,37 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container mt-5">
+  <h2>Uploaded Images</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Image</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for picture in pictures %}
+      <tr>
+        <td>{{ picture.name }}</td>
+        <td>{{ picture.email }}</td>
+        <td>
+          <img
+            src="{{ picture.image.url }}"
+            alt="{{ picture.name }}"
+            style="width: 100px; height: auto"
+          />
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="3">No images uploaded yet.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<button type="button" class="btn btn-outline-success user-defined">
+  <a class="button" href="{% url 'web:upload' %}">Add Image</a>
+</button>
+{% endblock content %}

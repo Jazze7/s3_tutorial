@@ -1,0 +1,11 @@
+div.content {
+  display: flex;
+  flex-direction: column;
+}
+a.button {
+  text-decoration: none !important;
+}
+button.user-defined {
+  display: flex;
+  margin: 0 auto;
+}
